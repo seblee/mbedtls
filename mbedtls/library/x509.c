@@ -73,9 +73,10 @@
 #if defined(MBEDTLS_FS_IO)
 #include <stdio.h>
 #if !defined(_WIN32)
-#include <sys/types.h>
-#include <sys/stat.h>
-#include <dirent.h>
+//#include <sys/types.h>
+//#include <sys/stat.h>
+#include <rtlibc.h>
+//#include <dirent.h>
 #endif
 #endif
 

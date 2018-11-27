@@ -1,5 +1,5 @@
 /**
- * \file config.h
+ * \file tls_config.h
  *
  * \brief Configuration options (set of defines)
  *
@@ -27,6 +27,9 @@
 
 #ifndef MBEDTLS_CONFIG_H
 #define MBEDTLS_CONFIG_H
+
+/* the memory allocation method configurations */
+#include <rtthread.h>
 
 #if defined(_MSC_VER) && !defined(_CRT_SECURE_NO_DEPRECATE)
 #define _CRT_SECURE_NO_DEPRECATE 1
@@ -117,7 +120,7 @@
  *
  * Comment if your system does not have a correct clock.
  */
-#define MBEDTLS_HAVE_TIME_DATE
+// #define MBEDTLS_HAVE_TIME_DATE
 
 /**
  * \def MBEDTLS_PLATFORM_MEMORY
@@ -241,7 +244,7 @@
  * You will need to provide a header "timing_alt.h" and an implementation at
  * compile time.
  */
-//#define MBEDTLS_TIMING_ALT
+#define MBEDTLS_TIMING_ALT
 
 /**
  * \def MBEDTLS_AES_ALT
@@ -411,7 +414,7 @@
  *
  * Uncomment to use your own hardware entropy collector.
  */
-//#define MBEDTLS_ENTROPY_HARDWARE_ALT
+#define MBEDTLS_ENTROPY_HARDWARE_ALT
 
 /**
  * \def MBEDTLS_AES_ROM_TABLES
@@ -903,7 +906,7 @@
  *
  * Uncomment this macro to disable the built-in platform entropy functions.
  */
-//#define MBEDTLS_NO_PLATFORM_ENTROPY
+#define MBEDTLS_NO_PLATFORM_ENTROPY
 
 /**
  * \def MBEDTLS_ENTROPY_FORCE_SHA256
@@ -1796,7 +1799,10 @@
  *
  * This module provides debugging functions.
  */
+ 
+#ifdef PKG_USING_MBEDTLS_DEBUG
 #define MBEDTLS_DEBUG_C
+#endif
 
 /**
  * \def MBEDTLS_DES_C
@@ -2063,7 +2069,7 @@
  *
  * This module provides networking routines.
  */
-#define MBEDTLS_NET_C
+//#define MBEDTLS_NET_C
 
 /**
  * \def MBEDTLS_OID_C
@@ -2715,5 +2721,11 @@
 #endif
 
 #include "check_config.h"
+
+#define tls_malloc  rt_malloc
+#define tls_free    rt_free
+#define tls_realloc rt_realloc
+#define tls_calloc  rt_calloc
+#define tls_strdup  rt_strdup
 
 #endif /* MBEDTLS_CONFIG_H */

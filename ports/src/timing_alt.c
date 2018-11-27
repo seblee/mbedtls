@@ -35,11 +35,13 @@
 #if defined(MBEDTLS_TIMING_C)
 
 #include "timing_alt.h"
-#include <unistd.h>
-#include <sys/types.h>
-#include <sys/time.h>
+//#include <unistd.h>
+//#include <sys/types.h>
+//#include <sys/time.h>
+#include <rtlibc.h>
 #include <signal.h>
 #include <time.h>
+#include "disguise_time.h"
 
 struct _hr_time
 {

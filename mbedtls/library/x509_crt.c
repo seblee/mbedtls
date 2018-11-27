@@ -69,9 +69,11 @@
 #if defined(MBEDTLS_FS_IO)
 #include <stdio.h>
 #if !defined(_WIN32) || defined(EFIX64) || defined(EFI32)
-#include <sys/types.h>
-#include <sys/stat.h>
-#include <dirent.h>
+//#include <sys/types.h>
+//#include <sys/stat.h>
+//#include <rtlibc.h>
+#include <dfs_posix.h>
+//#include <dirent.h>
 #endif /* !_WIN32 || EFIX64 || EFI32 */
 #endif
 
