@@ -65,7 +65,7 @@ static int wsa_init_done = 0;
 #include <netdb.h>
 
 #include <rtthread.h>
-
+#include "dfs_posix.h"
 #define __socklen_t_defined
 
 /* input flags for struct addrinfo */
